@@ -13,7 +13,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return 'Selamat Datang Yisha';
+        //return 'Selamat Datang Yisha';
+        return view('home', ['teks' => 'Selamat Datang Yisha']);
     }
 
     /**
