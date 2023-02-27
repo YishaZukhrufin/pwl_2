@@ -12,6 +12,5 @@ class ContactUsBladeController extends Controller
             <a href="menuju ke laman wa">085606224256</a> <br>
             Terimakasih Sudah Datang
         ']);
-
     }
 }
