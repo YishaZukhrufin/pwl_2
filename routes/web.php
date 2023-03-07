@@ -7,7 +7,9 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\ContactUsBladeController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HobiController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\KuliahController;
 use App\Http\Controllers\NewsBladeController;
 use App\Http\Controllers\PageController;
@@ -51,6 +53,10 @@ Route::get('/prak2', function (){
     return view ('layout.template');
 });
 
+Route::get('/', [DashboardController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/profile', [ProdileController::class, 'index']);
 Route::get('/kuliah', [KuliahController::class, 'index']);
+
+Route::get('/kendaraan', [KendaraanController::class, 'index']);
+Route::get('/hobi', [HobiController::class, 'index']);
