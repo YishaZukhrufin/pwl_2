@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kendaraan', function (Blueprint $table) {
-            $table->string('no_pol',10)->primary();
-            $table->string('merk',30);
-            $table->string('jenis',30);
-            $table->smallInteger('tahun');
-            $table->string('warna',10);
+        Schema::create('matakuliah', function (Blueprint $table) {
+            $table->string('kode_mk', 10)->primary();
+            $table->string('nama_mk', 50);
+            $table->smallInteger('sks');
+            $table->string('nama_dosen', 100);
+            $table->smallInteger('jam');
+            $table->smallInteger('semester');
+            $table->string('nilai', 10);
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kendaraans');
+        Schema::dropIfExists('matakuliahs');
     }
 };
