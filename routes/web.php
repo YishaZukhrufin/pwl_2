@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AboutUsBladeController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\ContactUsBladeController;
 use App\Http\Controllers\Controller;
@@ -20,6 +21,7 @@ use App\Http\Controllers\ProductBladeController;
 use App\Http\Controllers\ProgramBladeController;
 use App\Http\Controllers\TestController;
 use Illuminate\Http\Resources\Json\PaginatedResourceResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,16 +53,36 @@ use Illuminate\Support\Facades\Route;
 //praktikum 3
 //no1
 //
-Route::get('/prak2', function (){
-    return view ('layout.template');
+// Route::get('/prak2', function (){
+//     return view ('layout.template');
+// });
+
+// Route::get('/', [DashboardController::class, 'index']);
+// Route::get('/dashboard', [DashboardController::class, 'index']);
+// Route::get('/profile', [ProdileController::class, 'index']);
+// Route::get('/kuliah', [KuliahController::class, 'index']);
+
+// Route::get('/kendaraan', [KendaraanController::class, 'index']);
+// Route::get('/hobi', [HobiController::class, 'index']);
+// Route::get('/keluarga', [KeluargaController::class, 'index']);
+// Route::get('/matakuliah', [MatakuliahController::class, 'index']);
+Auth::routes();
+Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::middleware(['auth']) ->group(function(){
+    Route::get('/prak2', function (){
+        return view ('layout.template');
+    });
+    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/profile', [ProdileController::class, 'index']);
+    Route::get('/kuliah', [KuliahController::class, 'index']);
+
+    Route::get('/kendaraan', [KendaraanController::class, 'index']);
+    Route::get('/hobi', [HobiController::class, 'index']);
+    Route::get('/keluarga', [KeluargaController::class, 'index']);
+    Route::get('/matakuliah', [MatakuliahController::class, 'index']);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 
-Route::get('/', [DashboardController::class, 'index']);
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/profile', [ProdileController::class, 'index']);
-Route::get('/kuliah', [KuliahController::class, 'index']);
-
-Route::get('/kendaraan', [KendaraanController::class, 'index']);
-Route::get('/hobi', [HobiController::class, 'index']);
-Route::get('/keluarga', [KeluargaController::class, 'index']);
-Route::get('/matakuliah', [MatakuliahController::class, 'index']);
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

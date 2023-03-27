@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class TambahKolomUsername extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('hobi', function (Blueprint $table) {
-            $table->id();
-            $table->string('Hobi',50);
-            $table->string('Alesan',2000);
-            $table->timestamps();
+        Schema::table('users', function(Blueprint $table){
+            $table->string('username', 10)->after('id')->nullable()->unique()->index();
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hobis');
+        Schema::table('users', function (Blueprint $table){
+            $table->dropColumn('username');
+        });
     }
 };
