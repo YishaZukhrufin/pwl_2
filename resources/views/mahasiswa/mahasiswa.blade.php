@@ -54,11 +54,14 @@
                         class="btn btn-sm btn-primary">Show</a>
 
                     <a href="{{url('/mahasiswa/'.$m->id.'/edit') }}" class="btn btn-sm btn-warning">edit</a>
+                    <a href="{{url('/mahasiswa/'. $m->id. '/khs')}}"
+                        class="btn btn-sm btn-warning">Nilai</a>
                     <form method="POST" action="{{ url('/mahasiswa/'.$m->id) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                     </form>
+
                   </td>
                 </tr>
                 @endforeach

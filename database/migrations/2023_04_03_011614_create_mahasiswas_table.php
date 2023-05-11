@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('nim', 10)->unique();
             $table->string('nama', 50)->nullable();
             $table->string('jk', 1)->nullable();
-            $table->string('tempat lahir', 50)->nullable();
-            $table->date('tanggal lahir')->nullable();
+            $table->string('tempat_lahir', 50)->nullable();
+            $table->date('tanggal_lahir')->nullable();
             $table->string('alamat')->nullable();
             $table->string('hp', 15)->nullable();
             $table->timestamps();
