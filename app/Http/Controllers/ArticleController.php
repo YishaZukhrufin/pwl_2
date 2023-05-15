@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Article;
+
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -64,9 +65,11 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
-        //
+        $article = Article::find($id);
+
+        return view('article.edit', ['article' => $article]);
     }
 
     /**
@@ -76,9 +79,21 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+
+        $article->title = $request->title;
+        $article->content = $request->content;
+
+        if($article->featured_image && file_exists(storage_path('app/public/' .$article->featured_image))){
+            Storage::delete('public/' .$article->featured_image);
+        }
+        $image_name = $request->file('image')->store('images', 'public');
+        $article->featured_image = $image_name;
+
+        $article->save();
+        return 'Artikel berhasil diubah';
     }
 
     /**
