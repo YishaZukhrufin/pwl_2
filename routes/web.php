@@ -90,6 +90,7 @@ Route::middleware(['auth']) ->group(function(){
 
     //praktikum 10
     Route::resource('article', ArticleController::class);
+    Route::get('/articlecetak', [ArticleController::class, 'cetak_pdf']);
 });
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
