@@ -50,11 +50,12 @@
               @endforeach
             @else
             <tr>
-              <td colspan="6" class="text-center">Data tidak ada</td>
+              <td colspan="7" class="text-center">Data tidak ada</td>
             </tr>
             @endif
           </tbody>
         </table>
+        <a href="{{ url('/mahasiswa/khs/' . $mahasiswa->id) }}" class="btn btn-primary">Cetak KRS</a>
       </div>
       <!-- /.card-body -->
     </div>

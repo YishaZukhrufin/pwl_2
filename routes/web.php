@@ -88,9 +88,13 @@ Route::middleware(['auth']) ->group(function(){
     Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
     Route::get('/mahasiswa/{id}/khs',[MahasiswaController::class,'khs']);
 
+    //tugas p10
+    Route::get('/mahasiswa/khs/{id}', [MahasiswaController::class, 'cetak_pdf']);
+    Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id'); 
+
     //praktikum 10
     Route::resource('article', ArticleController::class);
-    Route::get('/articlecetak', [ArticleController::class, 'cetak_pdf']);
+    Route::get('/articlecetak', [ArticleController::class, 'cetak_pdf']); 
 });
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
