@@ -90,7 +90,9 @@ Route::middleware(['auth']) ->group(function(){
 
     //tugas p10
     Route::get('/mahasiswa/khs/{id}', [MahasiswaController::class, 'cetak_pdf']);
-    Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id'); 
+    Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
+    //p12
+    Route::post('/mahasiswa/data', [MahasiswaController::class, 'data']);
 
     //praktikum 10
     Route::resource('article', ArticleController::class);
